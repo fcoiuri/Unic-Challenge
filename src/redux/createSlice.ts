@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { registerUser } from 'redux/module/UsersService';
 import { IUsersState, IUsersForm, ApiStatus } from 'redux//module/Users.type';
-import { toastSuccess } from 'components/Background/ToastifyConfig';
+import { toastSuccess } from 'components/ToastifyConfig';
 
 const initialState: IUsersState = {
   list: [],
@@ -19,7 +19,11 @@ export const registerUserState = createAsyncThunk(
 const slice = createSlice({
   name: 'users',
   initialState,
-  reducers: {},
+  reducers: {
+    resetRegisterUser: (state) => {
+      state.registerUser = ApiStatus.ideal;
+    }
+  },
   extraReducers: (state) => {
     state.addCase(registerUserState.pending, (state) => {
       state.registerUser = ApiStatus.loading;
@@ -36,3 +40,4 @@ const slice = createSlice({
 });
 
 export default slice.reducer;
+export const { resetRegisterUser } = slice.actions;
