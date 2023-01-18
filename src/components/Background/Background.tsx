@@ -8,15 +8,6 @@ interface BackgroundProps {
 }
 
 export const Background: React.FC<BackgroundProps> = ({ title, children }) => {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password')
-    });
-  };
-
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -34,9 +25,8 @@ export const Background: React.FC<BackgroundProps> = ({ title, children }) => {
         <Typography component="h1" variant="h5">
           {title}
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-          {children}
-        </Box>
+
+        {children}
       </Box>
     </Container>
   );

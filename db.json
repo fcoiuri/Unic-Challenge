@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "email": "cr7@gmail.com",
+      "password": "$2a$10$w7E.OCmUdEuENeQsqfwJUuai4FY2ekDu1k5Awevp2pgWLrxlarrbe",
+      "firstName": "Cristiano",
+      "lastName": "Ronaldo",
+      "admin": true,
+      "id": 2
+    },
+    {
+      "email": "email@gmail.com",
+      "password": "$2a$10$CvfUF884aAcTkDq5wu0xQOO82aIlXRFoQ6atl1MEClE1S/ovWnxxC",
+      "firstName": "Teste Front",
+      "lastName": "Testado",
+      "admin": false,
+      "id": 3
+    },
+    {
+      "email": "emailadm@gmail.com",
+      "password": "$2a$10$vwh1oikuOOlN3tEdzVc/Ru/XUp4K/vDNGnHMM4JbWth5bVvsOwogC",
+      "firstName": "Teste Front Admin",
+      "lastName": "Testado Adm",
+      "admin": true,
+      "id": 4
+    }
+  ]
+}
