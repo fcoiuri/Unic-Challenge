@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import {
   Button,
   TextField,
@@ -13,12 +13,21 @@ import {
 } from '@mui/material/';
 import { Background } from 'components/Background';
 import { Visibility, VisibilityOff } from '@mui/icons-material/';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { ApiStatus, ISignIn } from 'redux/module/Users.type';
+import { signInAction } from 'redux/createSlice';
+import { useDispatch } from 'react-redux';
+import { AppDispatch, RootState, useAppSelector } from 'redux/store';
 
 export const Login: React.FC = () => {
   const [showPassword, setShowPassword] = React.useState(false);
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [verifyButton, setVerifyButton] = React.useState(false);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
+  const { signIn } = useAppSelector((state: RootState) => state.users);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -28,16 +37,33 @@ export const Login: React.FC = () => {
     event.preventDefault();
   };
 
-  const handleEmail = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
-  const handlePassword = (e: ChangeEvent<HTMLInputElement>) => {
+
+  const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const data: ISignIn = {
+      email,
+      password
+    };
+
+    dispatch(signInAction(data));
   };
+
+  React.useEffect(() => {
+    if (ApiStatus.success === signIn) {
+      setVerifyButton(true);
+      // dispatch(resetRegisterUser());
+      setTimeout(() => {
+        navigate('/dashboard');
+      }, 1000);
+    }
+  }, [dispatch, navigate, signIn]);
 
   return (
     <Background title="Login">
@@ -82,6 +108,7 @@ export const Login: React.FC = () => {
 
         <Button
           type="submit"
+          disabled={verifyButton}
           fullWidth
           variant="contained"
           sx={{ mt: 3, mb: 2, backgroundColor: '#5C5CFF' }}

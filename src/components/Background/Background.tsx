@@ -4,7 +4,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { ToastContainer } from 'react-toastify';
 
 interface BackgroundProps {
-  title?: string;
+  title: string;
   children: React.ReactNode;
 }
 

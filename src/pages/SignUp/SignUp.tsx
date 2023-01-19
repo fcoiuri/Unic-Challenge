@@ -17,7 +17,7 @@ import { Background } from 'components/Background';
 import { Visibility, VisibilityOff } from '@mui/icons-material/';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { registerUserState, resetRegisterUser } from 'redux/createSlice';
+import { registerUserAction, resetRegisterUser } from 'redux/createSlice';
 import { IUsersForm } from 'redux/module/Users.type';
 import { AppDispatch, RootState, useAppSelector } from 'redux/store';
 import { Notification } from 'components/Notification';
@@ -33,8 +33,9 @@ export const SignUp: React.FC = () => {
   const [admin, setAdmin] = React.useState(false);
   const [verifyButton, setVerifyButton] = React.useState(false);
 
+  const { registerUser } = useAppSelector((state: RootState) => state.users);
+
   const dispatch = useDispatch<AppDispatch>();
-  const { registerUser } = useAppSelector((state: RootState) => state.register);
   const navigate = useNavigate();
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -75,7 +76,7 @@ export const SignUp: React.FC = () => {
       admin
     };
 
-    dispatch(registerUserState(data));
+    dispatch(registerUserAction(data));
   };
 
   React.useEffect(() => {
@@ -84,7 +85,7 @@ export const SignUp: React.FC = () => {
       setVerifyButton(true);
       setTimeout(() => {
         navigate('/');
-      }, 1800);
+      }, 1000);
     }
   }, [dispatch, navigate, registerUser]);
 
