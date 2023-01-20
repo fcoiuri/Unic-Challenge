@@ -1,17 +1,9 @@
-export interface IUsers {
-  id: number;
-  email: string;
-  password: string;
-  firstName: string;
-  lastName: string;
-  admin: boolean;
-}
-
 export interface IUser {
   admin: boolean;
   email: string;
+  password?: string;
   firstName: string;
-  id: number;
+  id?: number;
   lastName: string;
 }
 
@@ -20,6 +12,11 @@ export interface IUserLogged {
   user?: {
     [key: string]: IUser;
   };
+}
+
+export interface IUserFormUpdate {
+  id: number;
+  user: IUser;
 }
 
 export interface ISignIn {
@@ -44,7 +41,7 @@ export enum ApiStatus {
 }
 
 export interface IUsersState {
-  users: IUsers[];
+  users: IUser[];
   usersStatus: ApiStatus;
   registerUser: ApiStatus;
   signIn: ApiStatus;

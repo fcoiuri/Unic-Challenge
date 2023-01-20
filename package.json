@@ -9,8 +9,8 @@
     "@mui/material": "^5.11.4",
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^13.2.1",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
@@ -32,6 +32,11 @@
     "eject": "react-scripts eject",
     "json-server": "json-server --watch db.json --port 3001 -m ./node_modules/json-server-auth"
   },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!axios)/"
+    ]
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -51,6 +56,8 @@
     ]
   },
   "devDependencies": {
+    "jest": "^29.3.1",
+    "jest-environment-jsdom": "^29.3.1",
     "json-server": "^0.17.1",
     "json-server-auth": "^2.1.0"
   }

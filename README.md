@@ -1,46 +1,60 @@
-# Getting Started with Create React App
+# Título do projeto
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplicação de cadastro de usuários.
 
-## Available Scripts
+## 🚀 Começando
 
-In the project directory, you can run:
+1. Clone o repositório
+   ```sh
+   git clone https://github.com/fcoiuri/Unic-Challenge.git
+   ```
+2. Instale os pacotes
+   ```sh
+   yarn install
+   ```
 
-### `yarn start`
+## 📦 Credenciais
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### O usuário administrador é:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- e-mail: softplan@gmail.com
+- senha: senha
 
-### `yarn test`
+## ☕ Usando o projeto
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Para usar, siga estas etapas:
+1.Inicie o servidor
 
-### `yarn build`
+```sh
+yarn json-server
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2.Inicie a aplicação
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```sh
+yarn start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3.Caso queira executar testes, execute:
 
-### `yarn eject`
+```sh
+yarn test
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- ###### Para adicionar um usuário, bastar clicar no menu "Adicionar Usuário".
+- ###### Caso esteja logado em uma conta ADM e queira excluir um usuário, clique no _checkbox_ na linha correspondente ao usuário e clique no ícone da lixeira. Para editar, é só clicar no ícone de um lápis.
+- ###### Caso queira editar seu perfil, basta clicar no menu Meu Perfil.
+- ##### Para sair da aplicação basta clicar em "Sair".
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🛠️ Construído com
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- React
+- [Mui](https://mui.com) - Biblioteca de componentes React
+- Axios
+- json-server
+- Jest
+- React Testing Library
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+---
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+⌨️ com ❤️ por [Iuri Mendes](https://github.com/fcoiuri)

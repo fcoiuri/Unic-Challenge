@@ -2,18 +2,16 @@ import React from 'react';
 import {
   Button,
   TextField,
-  Grid,
   FormControl,
   InputLabel,
   OutlinedInput,
   IconButton,
   InputAdornment,
-  Typography,
   Box
 } from '@mui/material/';
 import { Background } from 'components/Background';
 import { Visibility, VisibilityOff } from '@mui/icons-material/';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ApiStatus, ISignIn } from 'redux/module/Users.type';
 import { signInAction } from 'redux/createSlice';
 import { useDispatch } from 'react-redux';
@@ -58,7 +56,6 @@ export const Login: React.FC = () => {
   React.useEffect(() => {
     if (ApiStatus.success === signIn) {
       setVerifyButton(true);
-      // dispatch(resetRegisterUser());
       setTimeout(() => {
         navigate('/dashboard');
       }, 1000);
@@ -115,13 +112,6 @@ export const Login: React.FC = () => {
         >
           Entrar
         </Button>
-        <Grid container justifyContent="flex-end">
-          <Grid item>
-            <Typography variant="subtitle1">
-              <Link to="/signUP">Não tem uma conta? Crie uma</Link>
-            </Typography>
-          </Grid>
-        </Grid>
       </Box>
     </Background>
   );

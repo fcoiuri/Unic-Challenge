@@ -24,7 +24,7 @@ export const Background: React.FC<BackgroundProps> = ({ title, children }) => {
           <Avatar sx={{ m: 1, bgcolor: '#5C5CFF' }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" data-testid="title">
             {title}
           </Typography>
 

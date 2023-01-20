@@ -3,17 +3,19 @@ import {
   registerUser,
   signIn,
   getUsers,
-  searchUser
+  searchUser,
+  updateUser,
+  deleteUser
 } from 'redux/module/UsersService';
 import {
   IUsersState,
   IUsersForm,
   ApiStatus,
   ISignIn,
-  IUserLogged
-} from 'redux//module/Users.type';
+  IUserLogged,
+  IUserFormUpdate
+} from 'redux/module/Users.type';
 import { toastSuccess } from 'components/ToastifyConfig';
-import { StarRate } from '@mui/icons-material';
 
 const initialState: IUsersState = {
   users: [],
@@ -55,6 +57,22 @@ export const searchUserAction = createAsyncThunk(
   }
 );
 
+export const updateUserAction = createAsyncThunk(
+  'user/update',
+  async ({ id, user }: IUserFormUpdate) => {
+    const response = await updateUser(id, user);
+    return response.data;
+  }
+);
+
+export const deleteUserAction = createAsyncThunk(
+  'user/delete',
+  async (id: number) => {
+    await deleteUser(id);
+    return id;
+  }
+);
+
 const slice = createSlice({
   name: 'users',
   initialState,
@@ -63,7 +81,7 @@ const slice = createSlice({
       state.registerUser = ApiStatus.ideal;
     },
     logout: (state) => {
-      state.user = { accessToken: null };
+      state.signIn = ApiStatus.ideal;
     }
   },
   extraReducers: (state) => {
@@ -122,6 +140,24 @@ const slice = createSlice({
     state.addCase(searchUserAction.rejected, (state) => {
       state.signIn = ApiStatus.error;
       toastSuccess('Ocorreu algum erro no login...');
+    });
+    state.addCase(updateUserAction.pending, (state) => {
+      state.signIn = ApiStatus.loading;
+    });
+
+    state.addCase(updateUserAction.fulfilled, (state, data) => {
+      state.usersStatus = ApiStatus.ideal;
+      toastSuccess('Usuário atualizado');
+    });
+
+    state.addCase(updateUserAction.rejected, (state) => {
+      state.signIn = ApiStatus.error;
+      toastSuccess('Ocorreu algum erro na requisição...');
+    });
+    state.addCase(deleteUserAction.fulfilled, (state, data) => {
+      const removeUser = state.users.filter((x) => x.id !== data.payload);
+      state.users = removeUser;
+      toastSuccess('Usuário deletado!');
     });
   }
 });

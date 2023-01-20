@@ -1,28 +1,92 @@
 {
   "users": [
     {
-      "email": "cr7@gmail.com",
-      "password": "$2a$10$w7E.OCmUdEuENeQsqfwJUuai4FY2ekDu1k5Awevp2pgWLrxlarrbe",
-      "firstName": "Cristiano",
-      "lastName": "Ronaldo",
+      "email": "softplan@gmail.com",
+      "password": "$2a$10$aOuSryAf1a./WokVUrlQFe7TNW6AySfMLFSajLjx1Q70zKSpNe5OC",
+      "firstName": "Soft",
+      "lastName": "Plan",
+      "admin": true,
+      "id": 1
+    },
+    {
+      "email": "fcoiuri@gmail.com",
+      "password": "$2a$10$qNJAcS8lO.QTl4Wdt8wECemN.NpBX0gE0sOo2E8FewXsLnUkUgHHG",
+      "firstName": "Iuri",
+      "lastName": "Mendes",
       "admin": true,
       "id": 2
     },
     {
-      "email": "email@gmail.com",
-      "password": "$2a$10$CvfUF884aAcTkDq5wu0xQOO82aIlXRFoQ6atl1MEClE1S/ovWnxxC",
-      "firstName": "Teste Front",
-      "lastName": "Testado",
+      "email": "semadm@gmail.com",
+      "password": "$2a$10$qNJAcS8lO.QTl4Wdt8wECemN.NpBX0gE0sOo2E8FewXsLnUkUgHHG",
+      "firstName": "John",
+      "lastName": "Doe",
       "admin": false,
       "id": 3
     },
     {
-      "email": "emailadm@gmail.com",
-      "password": "$2a$10$vwh1oikuOOlN3tEdzVc/Ru/XUp4K/vDNGnHMM4JbWth5bVvsOwogC",
-      "firstName": "Teste Front Admin",
-      "lastName": "Testado Adm",
-      "admin": true,
+      "email": "semadm1@gmail.com",
+      "password": "$2a$10$qNJAcS8lO.QTl4Wdt8wECemN.NpBX0gE0sOo2E8FewXsLnUkUgHHG",
+      "firstName": "John",
+      "lastName": "D.",
+      "admin": false,
       "id": 4
+    },
+    {
+      "email": "semadm2@gmail.com",
+      "password": "$2a$10$qNJAcS8lO.QTl4Wdt8wECemN.NpBX0gE0sOo2E8FewXsLnUkUgHHG",
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "admin": false,
+      "id": 5
+    },
+    {
+      "email": "semadm3@gmail.com",
+      "password": "$2a$10$qNJAcS8lO.QTl4Wdt8wECemN.NpBX0gE0sOo2E8FewXsLnUkUgHHG",
+      "firstName": "Mike",
+      "lastName": "Scott",
+      "admin": true,
+      "id": 6
+    },
+    {
+      "email": "semadm4@gmail.com",
+      "password": "$2a$10$qNJAcS8lO.QTl4Wdt8wECemN.NpBX0gE0sOo2E8FewXsLnUkUgHHG",
+      "firstName": "Dwight",
+      "lastName": "Schrute",
+      "admin": false,
+      "id": 7
+    },
+    {
+      "email": "semadm5@gmail.com",
+      "password": "$2a$10$qNJAcS8lO.QTl4Wdt8wECemN.NpBX0gE0sOo2E8FewXsLnUkUgHHG",
+      "firstName": "Jim",
+      "lastName": "Halpert",
+      "admin": false,
+      "id": 8
+    },
+    {
+      "email": "pambeesly@gmail.com",
+      "password": "$2a$10$qNJAcS8lO.QTl4Wdt8wECemN.NpBX0gE0sOo2E8FewXsLnUkUgHHG",
+      "firstName": "Pam",
+      "lastName": "Beesly",
+      "admin": false,
+      "id": 9
+    },
+    {
+      "email": "andybernard@gmail.com",
+      "password": "$2a$10$qNJAcS8lO.QTl4Wdt8wECemN.NpBX0gE0sOo2E8FewXsLnUkUgHHG",
+      "firstName": "Andy",
+      "lastName": "Bernard",
+      "admin": false,
+      "id": 10
+    },
+    {
+      "email": "kevin@gmail.com",
+      "password": "$2a$10$qNJAcS8lO.QTl4Wdt8wECemN.NpBX0gE0sOo2E8FewXsLnUkUgHHG",
+      "firstName": "Kevin",
+      "lastName": "Malone",
+      "admin": false,
+      "id": 11
     }
   ]
 }

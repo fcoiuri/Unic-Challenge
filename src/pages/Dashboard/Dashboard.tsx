@@ -13,12 +13,17 @@ import {
   Grid,
   Paper,
   AppBar as MuiAppBar,
-  AppBarProps as MuiAppBarProps
+  AppBarProps as MuiAppBarProps,
+  IconButton
 } from '@mui/material/';
 import { AppDispatch, RootState, useAppSelector } from 'redux/store';
-import { ApiStatus } from 'redux/module/Users.type';
-import IconButton from '@mui/material/IconButton';
-import { Menu, Search as SearchIcon, ChevronLeft } from '@mui/icons-material/';
+import { Notification } from 'components/Notification';
+import {
+  Menu,
+  Search as SearchIcon,
+  ChevronLeft,
+  Person
+} from '@mui/icons-material/';
 import { MainListItems, SecondaryListItems } from 'pages/Dashboard/ListItems';
 import { Users } from 'pages/Dashboard/Users';
 import { useDispatch } from 'react-redux';
@@ -84,9 +89,9 @@ const Search = styled('div')(({ theme }) => ({
   marginRight: theme.spacing(2),
   marginLeft: 0,
   width: '100%',
-  [theme.breakpoints.up('sm')]: {
+  [theme.breakpoints.up('xs')]: {
     marginLeft: theme.spacing(3),
-    width: 'auto'
+    width: '50vw'
   }
 }));
 
@@ -104,12 +109,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '20ch'
+      width: 'auto'
     }
   }
 }));
@@ -117,6 +121,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export const Dashboard: React.FC = () => {
   const [open, setOpen] = React.useState(true);
   const [search, setSearch] = React.useState('');
+
+  const { user } = useAppSelector((state: RootState) => state.users.user);
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -133,91 +139,112 @@ export const Dashboard: React.FC = () => {
   }, [search, dispatch]);
 
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar position="absolute" open={open}>
-        <Toolbar
-          sx={{
-            pr: '24px' // keep right padding when drawer closed
-          }}
-        >
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={toggleDrawer}
+    <React.Fragment>
+      <Box sx={{ display: 'flex' }}>
+        <CssBaseline />
+        <AppBar position="absolute" open={open}>
+          <Toolbar
             sx={{
-              marginRight: '36px',
-              ...(open && { display: 'none' })
+              justifyContent: 'space-between',
+              pr: '1vw'
             }}
           >
-            <Menu />
-          </IconButton>
-          <Typography
-            component="h1"
-            variant="h6"
-            color="inherit"
-            noWrap
-            sx={{ flexGrow: 1 }}
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="open drawer"
+              onClick={toggleDrawer}
+              sx={{
+                marginRight: '1vw',
+                ...(open && { display: 'none' })
+              }}
+            >
+              <Menu />
+            </IconButton>
+            <Grid display={{ xs: 'none', lg: 'block', md: 'block' }}>
+              <Typography
+                component="h1"
+                variant="h6"
+                color="inherit"
+                noWrap
+                sx={{ flexGrow: 1 }}
+              >
+                Bem-vindo
+                <>{user?.firstName ? `, ${user?.firstName}!` : '!'}</>
+              </Typography>
+            </Grid>
+            <Grid container direction="row" justifyContent="center">
+              <Search>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                  value={search}
+                  onChange={handleSearch}
+                  placeholder="Buscar Usuário…"
+                  inputProps={{ 'aria-label': 'search' }}
+                />
+              </Search>
+            </Grid>
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="open drawer"
+              onClick={toggleDrawer}
+              sx={{
+                marginRight: 'none',
+                ...(open && { display: 'none' })
+              }}
+            >
+              <Person />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+        <Drawer variant="permanent" open={open}>
+          <Toolbar
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'flex-end',
+              px: [1]
+            }}
           >
-            Dashboard
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              value={search}
-              onChange={handleSearch}
-              placeholder="Buscar Usuário…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-        </Toolbar>
-      </AppBar>
-      <Drawer variant="permanent" open={open}>
-        <Toolbar
+            <IconButton onClick={toggleDrawer}>
+              <ChevronLeft />
+            </IconButton>
+          </Toolbar>
+          <Divider />
+          <List component="nav">
+            <MainListItems />
+            <Divider sx={{ my: 1 }} />
+            <SecondaryListItems />
+          </List>
+        </Drawer>
+        <Box
+          component="main"
           sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'flex-end',
-            px: [1]
+            backgroundColor: (theme) =>
+              theme.palette.mode === 'light'
+                ? theme.palette.grey[100]
+                : theme.palette.grey[900],
+            flexGrow: 1,
+            height: '100vh',
+            overflow: 'auto'
           }}
         >
-          <IconButton onClick={toggleDrawer}>
-            <ChevronLeft />
-          </IconButton>
-        </Toolbar>
-        <Divider />
-        <List component="nav">
-          <MainListItems />
-          <Divider sx={{ my: 1 }} />
-          <SecondaryListItems />
-        </List>
-      </Drawer>
-      <Box
-        component="main"
-        sx={{
-          backgroundColor: (theme) =>
-            theme.palette.mode === 'light'
-              ? theme.palette.grey[100]
-              : theme.palette.grey[900],
-          flexGrow: 1,
-          height: '100vh',
-          overflow: 'auto'
-        }}
-      >
-        <Toolbar />
-        <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                <Users />
-              </Paper>
+          <Toolbar />
+          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                  <Users />
+                </Paper>
+              </Grid>
             </Grid>
-          </Grid>
-        </Container>
+          </Container>
+        </Box>
       </Box>
-    </Box>
+      <Notification />
+    </React.Fragment>
   );
 };
