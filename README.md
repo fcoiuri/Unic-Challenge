@@ -20,7 +20,7 @@
 
 ## ☕ Usando o projeto
 
-Para usar, siga estas etapas:
+Para usar, siga estas etapas:  
 1.Inicie o servidor
 
 ```sh
@@ -39,9 +39,9 @@ yarn start
 yarn test
 ```
 
-- ###### Para adicionar um usuário, bastar clicar no menu "Adicionar Usuário".
-- ###### Caso esteja logado em uma conta ADM e queira excluir um usuário, clique no _checkbox_ na linha correspondente ao usuário e clique no ícone da lixeira. Para editar, é só clicar no ícone de um lápis.
-- ###### Caso queira editar seu perfil, basta clicar no menu Meu Perfil.
+- ##### Para adicionar um usuário, bastar clicar no menu "Adicionar Usuário".
+- ##### Caso esteja logado em uma conta ADM e queira excluir um usuário, clique no _checkbox_ na linha correspondente ao usuário e clique no ícone da lixeira. Para editar, é só clicar no ícone de um lápis.
+- ##### Caso queira editar seu perfil, basta clicar no menu Meu Perfil.
 - ##### Para sair da aplicação basta clicar em "Sair".
 
 ## 🛠️ Construído com
