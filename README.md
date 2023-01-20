@@ -48,6 +48,8 @@ yarn test
 
 - React
 - [Mui](https://mui.com) - Biblioteca de componentes React
+- Redux Toolkit
+- react-toastify
 - Axios
 - json-server
 - Jest
