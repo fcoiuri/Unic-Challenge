@@ -1,6 +1,4 @@
-# Título do projeto
-
-Aplicação de cadastro de usuários.
+# Aplicação de cadastro de usuários.
 
 ## 🚀 Começando
 
